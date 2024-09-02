@@ -247,10 +247,10 @@ Project Link: [https://github.com/ymping/lxcfs-admission-webhook](https://github
 [product-screenshot]: http://assets.processon.com/chart_image/6208c9970e3e7407d1cddc1d.png
 
 
-若k8s环境中，既有docker命令, 又有crictl命令，且runtime使用containerd，则需要
-调整 lxcfs 获取实际 mem , 修改main()函数中，判断docker的逻辑，直接if crictl
-然后直接通过 configmap 的方式，重新挂载到 lxcfs deamonset 中
-vim lxcfs-image/lxcfs-mount.sh 
-
-若出现 无法访问lxcfs: 传输端点尚未连接 的问题，在宿主机上执行命令
-umount /var/lib/lxc/lxcfs
+若k8s环境中，既有docker命令, 又有crictl命令，且runtime使用containerd，则需要  
+调整 lxcfs 获取实际 mem , 修改main()函数中，判断docker的逻辑，直接if crictl  
+然后直接通过 configmap 的方式，重新挂载到 lxcfs deamonset 中  
+vim lxcfs-image/lxcfs-mount.sh   
+  
+若出现 无法访问lxcfs: 传输端点尚未连接 的问题，在宿主机上执行命令  
+umount /var/lib/lxc/lxcfs  

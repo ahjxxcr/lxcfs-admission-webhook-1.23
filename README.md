@@ -251,6 +251,11 @@ Project Link: [https://github.com/ymping/lxcfs-admission-webhook](https://github
 调整 lxcfs 获取实际 mem , 修改main()函数中，判断docker的逻辑，直接if crictl  
 然后直接通过 configmap 的方式，重新挂载到 lxcfs deamonset 中  
 vim lxcfs-image/lxcfs-mount.sh   
+
+镜像的启动命令：
+CMD ["/lxcfs/entrypoint.sh"]
+其中entrypoint中，对lxcfs-mount.sh的操作为 cat /lxcfs/lxcfs-mount.sh > ${LXCFS_SCRIPT_PATH}/lxcfs-mount.sh
+所以最好是将lxcfs-mount.sh挂载到 /lxcfs/lxcfs-mount.sh 中，这样会防止出现mount过程中的问题
   
 若出现 无法访问lxcfs: 传输端点尚未连接 的问题，在宿主机上执行命令  
 umount /var/lib/lxc/lxcfs  
